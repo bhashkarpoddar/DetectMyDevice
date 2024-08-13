@@ -1,6 +1,7 @@
 package com.example.detectmydevice.di
 
 import android.content.Context
+import com.example.detectmydevice.data.repository.LocationRepositoryImpl
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -23,5 +24,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideLocationRequest() = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000).build()
+
+    @Singleton
+    @Provides
+    fun provideLocationRepository(locationRequest: LocationRequest, fusedLocationClient: FusedLocationProviderClient) = LocationRepositoryImpl(locationRequest, fusedLocationClient)
 
 }

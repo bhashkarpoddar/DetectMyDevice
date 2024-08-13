@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">DetectMyDevice</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="not_started">Tap Start to receive location updates</string>
+
+    <string name="waiting_for_location">Waiting for location…</string>
+    <string name="location_lat_lng">Lat: %1$f\nLng: %2$f</string>
+    <string name="notification_channel_name">Location updates</string>
+    <string name="notification_title">Location updates</string>
+
+    <string name="permission_denied_title">"Permission refused</string>
+    <string name="permission_denied_alert">Kindly allow permission from app setting without this permission app would not work properly.</string>
 </resources>

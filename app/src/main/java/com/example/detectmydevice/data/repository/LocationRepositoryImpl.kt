@@ -3,7 +3,6 @@ package com.example.detectmydevice.data.repository
 import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Looper
-import com.example.detectmydevice.domain.LocationRepository
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationCallback
@@ -16,7 +15,7 @@ import javax.inject.Inject
 class LocationRepositoryImpl @Inject constructor(
     private val locationRequest: LocationRequest,
     private val fusedLocationClient: FusedLocationProviderClient
-) : LocationRepository {
+) {
 
     private val _isReceivingUpdates = MutableStateFlow(false)
     val isReceivingLocationUpdates = _isReceivingUpdates.asStateFlow()
@@ -38,12 +37,12 @@ class LocationRepositoryImpl @Inject constructor(
     }
 
     @SuppressLint("MissingPermission")
-    override fun startLocationUpdates() {
+    fun startLocationUpdates() {
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
         _isReceivingUpdates.value = true
     }
 
-    override fun stopLocationUpdates() {
+    fun stopLocationUpdates() {
         fusedLocationClient.removeLocationUpdates(locationCallback)
         _isReceivingUpdates.value = false
         _lastLocation.value = null
